@@ -10,8 +10,8 @@ const Grid = ({ grid, robot1Position, robot2Position, robot1Path, robot2Path }) 
                     const isRobot2 = robot2Position[0] === rowIndex && robot2Position[1] === colIndex;
                     const isBothRobots = isRobot1 && isRobot2;
 
-                    const isRobot1Path = robot1Path.some(([r, c]) => r === rowIndex && c === colIndex);
-                    const isRobot2Path = robot2Path.some(([r, c]) => r === rowIndex && c === colIndex);
+                    const isRobot1Path = robot1Path?.some(([r, c]) => r === rowIndex && c === colIndex);
+                    const isRobot2Path = robot2Path?.some(([r, c]) => r === rowIndex && c === colIndex);
 
                     let cellClass = '';
                     

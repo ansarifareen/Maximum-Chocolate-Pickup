@@ -12,52 +12,64 @@ export const maxChocolatesWithPath = (grid) => {
 };
 
 
+
 // export const maxChocolatesWithPath = (grid) => {
+//     const n = grid.length;
+//     const dp1 = Array.from({ length: n }, () => Array(n).fill(0)); // DP table for Robot 1
+//     const dp2 = Array.from({ length: n }, () => Array(n).fill(0)); // DP table for Robot 2
 //     const path1 = [];
 //     const path2 = [];
 
-//     const numRows = grid.length;
-//     const numCols = grid[0].length;
+//     // Initialize the DP table for Robot 1 (starting from top-left)
+//     dp1[0][0] = grid[0][0];
 
-//     // Logic for Robot 1 starting from (0,0)
-//     let row1 = 0, col1 = 0;
-//     while (row1 < numRows) {
-//         path1.push([row1, col1]);
-//         // Move down, diagonal left, or diagonal right
-//         if (row1 + 1 < numRows) {
-//             if (col1 > 0 && grid[row1 + 1][col1 - 1] >= grid[row1 + 1][col1] && grid[row1 + 1][col1 - 1] >= grid[row1 + 1][col1 + 1]) {
-//                 row1++;
-//                 col1--; // Move diagonal left
-//             } else if (col1 + 1 < numCols && grid[row1 + 1][col1 + 1] >= grid[row1 + 1][col1]) {
-//                 row1++;
-//                 col1++; // Move diagonal right
-//             } else {
-//                 row1++; // Move down
-//             }
-//         } else {
-//             break; // Stop if at the last row
+//     for (let i = 0; i < n; i++) {
+//         for (let j = 0; j < n; j++) {
+//             if (i === 0 && j === 0) continue; // Skip the starting cell
+//             dp1[i][j] = grid[i][j] + Math.max(
+//                 (i > 0 ? dp1[i - 1][j] : 0),   // Move from above
+//                 (j > 0 ? dp1[i][j - 1] : 0)    // Move from left
+//             );
 //         }
 //     }
 
-//     // Logic for Robot 2 starting from (0,n-1)
-//     let row2 = 0, col2 = numCols - 1;
-//     while (row2 < numRows) {
-//         path2.push([row2, col2]);
-//         // Move down, diagonal left, or diagonal right
-//         if (row2 + 1 < numRows) {
-//             if (col2 > 0 && grid[row2 + 1][col2 - 1] >= grid[row2 + 1][col2] && grid[row2 + 1][col2 - 1] >= grid[row2 + 1][col2 + 1]) {
-//                 row2++;
-//                 col2--; // Move diagonal left
-//             } else if (col2 + 1 < numCols && grid[row2 + 1][col2 + 1] >= grid[row2 + 1][col2]) {
-//                 row2++;
-//                 col2++; // Move diagonal right
-//             } else {
-//                 row2++; // Move down
-//             }
+//     // Backtrack to find the path for Robot 1
+//     let [i, j] = [n - 1, n - 1];
+//     while (i > 0 || j > 0) {
+//         path1.unshift([i, j]);
+//         if (i > 0 && dp1[i][j] === dp1[i - 1][j] + grid[i][j]) {
+//             i--;
 //         } else {
-//             break; // Stop if at the last row
+//             j--;
 //         }
 //     }
+//     path1.unshift([0, 0]); // Include the starting point
+
+//     // Initialize the DP table for Robot 2 (starting from top-right)
+//     dp2[0][n - 1] = grid[0][n - 1];
+
+//     for (let i = 0; i < n; i++) {
+//         for (let j = n - 1; j >= 0; j--) {
+//             if (i === 0 && j === n - 1) continue; // Skip the starting cell
+//             dp2[i][j] = grid[i][j] + Math.max(
+//                 (i > 0 ? dp2[i - 1][j] : 0),   // Move from above
+//                 (j < n - 1 ? dp2[i][j + 1] : 0) // Move from right
+//             );
+//         }
+//     }
+
+//     // Backtrack to find the path for Robot 2
+//     [i, j] = [n - 1, 0];
+//     while (i > 0 || j < n - 1) {
+//         path2.unshift([i, j]);
+//         if (i > 0 && dp2[i][j] === dp2[i - 1][j] + grid[i][j]) {
+//             i--;
+//         } else {
+//             j++;
+//         }
+//     }
+//     path2.unshift([0, n - 1]); // Include the starting point
 
 //     return { path1, path2 };
 // };
+

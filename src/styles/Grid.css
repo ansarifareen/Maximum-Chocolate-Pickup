@@ -19,20 +19,20 @@
 }
 
 .robot1-start {
-    background-color: rgb(248, 215, 220); /* Background for Robot 1's start position */
+    background-color: rgb(248, 215, 220);
 }
 
 .robot2-start {
-    background-color: rgb(218, 253, 218); /* Background for Robot 2's start position */
+    background-color: rgb(218, 253, 218); 
 }
 
 .robot1 {
-    /* border: 2px solid pink; */
+    
     background-color: lightpink; 
 }
 
 .robot2 {
-    /* border: 2px solid rgb(53, 241, 53); */
+   
     background-color: lightgreen; 
 }
 
